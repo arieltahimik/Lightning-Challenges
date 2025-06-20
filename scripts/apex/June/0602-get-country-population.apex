@@ -52,7 +52,7 @@ public static Integer getCountryPopulation(String countryName) {
 
 // Execute Anonymous Apex
 String countryName = 'Germany';
-System.debug('getCountryPopulation() >>> ' + getCountryPopulation(countryName));
+System.debug('getCountryPopulation() >>> ' + getCountryPopulation(countryName).format());
 
 countryName = 'Monaco';
-System.debug('getCountryPopulation() >>> ' + getCountryPopulation(countryName));
+System.debug('getCountryPopulation() >>> ' + getCountryPopulation(countryName).format());
