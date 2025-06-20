@@ -18,12 +18,11 @@ public static Boolean isCountryLandlocked(String countryName) {
 	// Write your code here to fetch country landlocked status from REST Countries API
 	// Use endpoint: https://restcountries.com/v3.1/name/{countryName} (GET method)
 	// Parse the JSON response and return the landlocked field
-	System.debug(
-		'Debug: Making HTTP GET request to REST Countries API for country: ' + countryName
-	);
+	System.debug('Debug: Making HTTP GET request to REST Countries API for country: ' + countryName);
+
 	if (String.isBlank(countryName)) {
-    return null;
-  } else {
+    	return null;
+  	} else {
 		Http http = new Http();
 		HttpRequest request = new HttpRequest();
 		request.setEndpoint('https://restcountries.com/v3.1/name/' + countryName);
@@ -31,11 +30,12 @@ public static Boolean isCountryLandlocked(String countryName) {
 		HttpResponse response = http.send(request);
 		
 		if (response.getStatusCode() == 200) {
-				List<Object> responseBody = (List<Object>) JSON.deserializeUntyped(response.getBody());
-				Map<String, Object> countryInfo = (Map<String, Object>) responseBody[0];				
-				Boolean landlocked = (Boolean) countryInfo.get('landlocked');            
-				return landlocked;
+			List<Object> responseBody = (List<Object>) JSON.deserializeUntyped(response.getBody());
+			Map<String, Object> countryInfo = (Map<String, Object>) responseBody[0];				
+			Boolean landlocked = (Boolean) countryInfo.get('landlocked');            
+			return landlocked;
 		}
+		
 		return false;
     }
 }
